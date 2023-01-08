@@ -66,7 +66,7 @@ const Header = () => {
                             isAdmin &&
                             <>
                                 <li><Link to='/dashboard/addphone'>Add Phone</Link></li>
-                                <li><Link to='/dashboard/users'>Users</Link></li>
+                                <li><Link to='/dashboard/buyers'>Users</Link></li>
                             </>
                         }
                         {menuItem}
