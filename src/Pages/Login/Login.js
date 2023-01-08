@@ -2,12 +2,13 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const { signIn, googleSignIn, updateUser } = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
     const [userEmail, setuserEmail] = useState('')
-    //const [token] = useToken(userEmail);
+    const [token] = useToken(userEmail);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const location = useLocation();
     const navigate = useNavigate();
@@ -31,8 +32,10 @@ const Login = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user;
+                console.log(user)
                 updateUser(user.displayName)
                     .then(() => {
+                        saveUser(user.displayName, user.email, false)
                         console.log(user)
                     })
                     .catch(error => console.log(error))
@@ -41,6 +44,23 @@ const Login = () => {
             .catch(error => {
                 setLoginError(error.message);
                 console.log(error)
+            })
+    }
+
+    const saveUser = (name, email, type) => {
+        const user = { name, email, isSeller: type }
+        console.log(user)
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                setuserEmail(email);
+                console.log(data)
             })
     }
 

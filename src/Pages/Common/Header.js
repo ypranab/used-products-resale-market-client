@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import useAdminRole from '../../hooks/useAdminRole';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [isAdmin] = useAdminRole(user?.email)
     const handleLogout = () => {
         logOut()
             .then(() => { })
@@ -44,13 +46,13 @@ const Header = () => {
                 <div className="dropdown dropdown-end">
                     {
                         user ?
-                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                            <label tabIndex={0} className="btn btn-primary btn-circle">
                                 <div className="w-10 rounded-full">
-                                    <img src={user?.photoURL} alt='' />
+                                    {user?.name}
                                 </div>
                             </label>
                             :
-                            <Link to='login'>login</Link>
+                            <Link to='/login'>login</Link>
                     }
                     {user && <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li>
@@ -59,7 +61,14 @@ const Header = () => {
                                 <span className="badge">New</span>
                             </Link>
                         </li>
-                        <li><Link>Settings</Link></li>
+                        <li><Link to='/dashboard'>Dashboard</Link></li>
+                        {
+                            isAdmin &&
+                            <>
+                                <li><Link to='/dashboard/addphone'>Add Phone</Link></li>
+                                <li><Link to='/dashboard/users'>Users</Link></li>
+                            </>
+                        }
                         {menuItem}
                     </ul>}
                 </div>

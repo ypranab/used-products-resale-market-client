@@ -1,8 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
+import AddProducts from "../Pages/AdminActivity/AddProducts";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import RouteError from "../Pages/Error/RouteError";
 import Home from "../Pages/Home/Home";
+import PhoneDetails from "../Pages/Home/PhoneDetails/PhoneDetails";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
+import AdminRoute from "./AdminRoute/AdminRoute";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -14,6 +20,11 @@ export const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
+                path: '/category/:brand',
+                element: <PrivateRoute><PhoneDetails></PhoneDetails></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.brand}`)
+            },
+            {
                 path: '/login',
                 element: <Login></Login>
             },
@@ -22,5 +33,19 @@ export const router = createBrowserRouter([
                 element: <SignUp></SignUp>
             },
         ]
+    },
+    {
+        path: '/dashboard',
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children: [
+            {
+                path: '/dashboard/addphone',
+                element: <AddProducts></AddProducts>
+            }
+        ]
+    },
+    {
+        path: '*',
+        element: <RouteError></RouteError>
     }
 ])

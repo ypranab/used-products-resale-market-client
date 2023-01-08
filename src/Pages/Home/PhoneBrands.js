@@ -2,13 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const PhoneBrands = ({ brand }) => {
+    const { logo, name } = brand;
     return (
 
-        <Link to='/login'>
-            <div className="card w-3/4 mx-auto shadow-xl">
-                <figure><img src={brand.logo} alt="logo" /></figure>
+        <Link to={`/category/${name}`}>
+            <div className="p-5 card w-3/4 mx-auto shadow-xl">
+                <figure><img src={logo} alt="logo" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title">{brand.name}</h2>
+                    <h2 className="text-center font-bold">{name}</h2>
                 </div>
             </div>
         </Link>
