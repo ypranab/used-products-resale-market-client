@@ -41,6 +41,23 @@ const AllSellers = () => {
             })
     }
 
+    const handleVerify = id => {
+        fetch(`http://localhost:5000/users/verify${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('user-token')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success('Verified Successfully')
+                    refetch()
+                }
+            })
+    }
+
     return (
         <div className="overflow-x-auto w-full">
             <table className="table ml-12 w-3/4">
@@ -49,7 +66,8 @@ const AllSellers = () => {
                         <th>SN</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Action</th>
+                        <th>Verify</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,8 +85,13 @@ const AllSellers = () => {
                             <td>
                                 <span className="badge badge-ghost badge-sm">{seller.email}</span>
                             </td>
+                            <td>
+                                {!seller.verify ?
+                                    <button className='btn btn-secondary btn-xs' onClick={() => { if (window.confirm('Are you sure?')) { handleVerify(seller._id) } }}>Verify</button>
+                                    : <button className='btn btn-xs' disabled>verified</button>}
+                            </td>
                             <th>
-                                <button onClick={() => { if (window.confirm('Delete the seller?')) { handleDelete(seller) } }} className="btn btn-ghost btn-xs">delete</button>
+                                <button onClick={() => { if (window.confirm('Delete the seller?')) { handleDelete(seller) } }} className="btn btn-warning btn-xs">delete</button>
                             </th>
                         </tr>)
                     }
