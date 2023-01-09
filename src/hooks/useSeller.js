@@ -10,7 +10,6 @@ const useSeller = (email) => {
                 setIsSeller(data.isSeller)
                 setSellerLoading(false)
             })
-        console.log(isSeller)
     }, [email, isSeller])
 
     return [isSeller, sellerLoading]

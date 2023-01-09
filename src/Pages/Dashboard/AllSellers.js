@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
-const AllBuyers = () => {
-    const buyers = useLoaderData();
+const AllSellers = () => {
+    const sellers = useLoaderData();
     return (
         <div className="overflow-x-auto w-full">
             <table className="table ml-12 w-3/4">
@@ -15,17 +15,17 @@ const AllBuyers = () => {
                 </thead>
                 <tbody>
                     {
-                        buyers.map(buyer => <tr>
-                            <td key={buyer._id}>
+                        sellers.map(seller => <tr>
+                            <td key={seller._id}>
                                 <div className="flex items-center space-x-3">
                                     <div>
-                                        <div className="font-bold">{buyer.name}</div>
-                                        <div className="text-sm opacity-50">{buyer.email}</div>
+                                        <div className="font-bold">{seller.name}</div>
+                                        <div className="text-sm opacity-50">{seller.email}</div>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <span className="badge badge-ghost badge-sm">{buyer.email}</span>
+                                <span className="badge badge-ghost badge-sm">{seller.email}</span>
                             </td>
                             <th>
                                 <button className="btn btn-ghost btn-xs">details</button>
@@ -39,4 +39,4 @@ const AllBuyers = () => {
     );
 };
 
-export default AllBuyers;
+export default AllSellers;

@@ -14,6 +14,10 @@ const Login = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
 
+    if (token) {
+        navigate(from, { replace: true })
+    }
+
     const handleLogin = data => {
         setLoginError('')
         signIn(data.email, data.password)
