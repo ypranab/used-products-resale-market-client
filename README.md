@@ -6,16 +6,11 @@
 ### adminPassword: 123456
 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Phone ReCommerce
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
+It is reCommerce site about used phones where users can buy used phones.
+There are two types of user: 1. Buyers and 2. Sellers
+### Buyers can only buy phones
+### Sellers can post about phones they want to sell
+### Admin Role is added to supervise the website
 
