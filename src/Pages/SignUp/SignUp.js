@@ -21,18 +21,18 @@ const SignUp = () => {
     }
     const handleSignUp = data => {
         setSignUpError('')
-        console.log(data)
         createUser(data.email, data.password, data.type)
             .then(result => {
                 const user = result.user;
+
                 toast.success('user created')
                 const userInfo = {
                     displayName: data.name
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        console.log(data.type)
                         saveUser(data.name, data.email, data.type)
+                        console.log(user)
                     })
                     .catch(error => console.log(error))
             })

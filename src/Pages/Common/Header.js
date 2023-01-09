@@ -4,7 +4,7 @@ import { AuthContext } from '../../Context/AuthProvider';
 import useAdminRole from '../../hooks/useAdminRole';
 
 const Header = () => {
-    const { user, logOut, cartLength } = useContext(AuthContext);
+    const { user, logOut, cartLength, loading } = useContext(AuthContext);
     const [isAdmin] = useAdminRole(user?.email)
     const handleLogout = () => {
         logOut()
@@ -20,8 +20,11 @@ const Header = () => {
                 : <li><Link to='/login'>Login</Link></li>
         }
     </>
+    if (loading) {
+        return <p>Loading</p>
+    }
     return (
-        <div className="navbar bg-accent">
+        <div className="navbar bg-accent mb-4">
             <div className="flex-1">
                 <Link to='/' className="btn btn-ghost normal-case text-xl">Home</Link>
             </div>

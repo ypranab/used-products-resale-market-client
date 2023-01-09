@@ -29,7 +29,6 @@ const MyProducts = () => {
                             <th>SN</th>
                             <th>Name</th>
                             <th>Payment</th>
-                            <th>Payment Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,12 +39,6 @@ const MyProducts = () => {
                                     <td>{idx + 1}</td>
                                     <th>{product.name}</th>
                                     <th>{product.brand}</th>
-                                    <th>
-                                        {
-                                            product.price &&
-                                            <Link to={`/dashboard/payment/${product._id}`}><button className='btn btn-sm'>pay</button></Link>
-                                        }
-                                    </th>
                                 </tr>)
                         }
                     </tbody>

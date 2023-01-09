@@ -10,7 +10,7 @@ const SideBar = () => {
     const [isAdmin] = useAdminRole(user?.email)
     return (
         <div className='grid grid-cols-1 gap-4'>
-            {!isSeller &&
+            {!isSeller && !isAdmin &&
                 <button className='btn btn-primary'><Link to='/dashboard/myorders'>My Orders</Link></button>
             }
             {isSeller && !isAdmin &&

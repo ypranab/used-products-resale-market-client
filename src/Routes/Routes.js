@@ -62,8 +62,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/buyers',
-                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>,
-                loader: () => fetch('http://localhost:5000/buyers')
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             },
             {
                 path: '/dashboard/sellers',
