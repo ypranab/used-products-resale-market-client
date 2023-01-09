@@ -15,7 +15,7 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/';
 
     if (token) {
-        navigate(from, { replace: true })
+        console.log("Token accessed")
     }
 
     const handleLogin = data => {
@@ -30,6 +30,7 @@ const Login = () => {
                 console.log(error.message);
                 setLoginError(error.message);
             })
+        navigate(from, { replace: true })
     }
 
     const handleGoogleLogin = () => {
@@ -43,7 +44,6 @@ const Login = () => {
                         console.log(user)
                     })
                     .catch(error => console.log(error))
-                navigate(from, { replace: true })
             })
             .catch(error => {
                 setLoginError(error.message);
@@ -64,8 +64,8 @@ const Login = () => {
             .then(res => res.json())
             .then(data => {
                 setuserEmail(email);
-                console.log(data)
             })
+        navigate(from, { replace: true })
     }
 
     return (

@@ -48,19 +48,14 @@ const Header = () => {
                         user ?
                             <label tabIndex={0} className="btn btn-primary btn-circle">
                                 <div className="w-10 rounded-full">
-                                    {user?.name}
+                                    <h3 className='text-xl'>{user?.displayName.slice(0, 1)}</h3>
                                 </div>
                             </label>
                             :
                             <Link to='/login'>login</Link>
                     }
                     {user && <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li>
-                            <Link className="justify-between">
-                                Profile
-                                <span className="badge">New</span>
-                            </Link>
-                        </li>
+                        <li className='font-extrabold text-red-400'><span>{user?.displayName}</span></li>
                         <li><Link to='/dashboard'>Dashboard</Link></li>
                         {
                             isAdmin &&

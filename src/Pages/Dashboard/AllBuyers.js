@@ -15,8 +15,8 @@ const AllBuyers = () => {
                 </thead>
                 <tbody>
                     {
-                        buyers.map(buyer => <tr>
-                            <td key={buyer._id}>
+                        buyers.map(buyer => <tr key={buyer._id}>
+                            <td>
                                 <div className="flex items-center space-x-3">
                                     <div>
                                         <div className="font-bold">{buyer.name}</div>

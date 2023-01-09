@@ -16,7 +16,7 @@ const SignUp = () => {
     const from = location.state?.from?.pathname || '/';
 
     if (token) {
-        navigate('/')
+        console.log("Token accessed")
     }
     const handleSignUp = data => {
         setSignUpError('')
@@ -53,8 +53,8 @@ const SignUp = () => {
             .then(res => res.json())
             .then(data => {
                 setuserEmail(email);
-                console.log(data)
             })
+        navigate(from, { replace: true })
     }
 
     const handleGoogleLogin = () => {
