@@ -8,7 +8,7 @@ const AllBuyers = () => {
         queryKey: ['buyers'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/buyers', {
+                const res = await fetch('https://used-products-resale-market-server-five.vercel.app/buyers', {
                     headers: {
                         'content-type': 'application/json',
                     }
@@ -27,7 +27,7 @@ const AllBuyers = () => {
     }
 
     const handleDelete = (buyer) => {
-        fetch(`http://localhost:5000/seller/${buyer._id}`, {
+        fetch(`https://used-products-resale-market-server-five.vercel.app/seller/${buyer._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',

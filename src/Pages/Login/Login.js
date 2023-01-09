@@ -53,7 +53,7 @@ const Login = () => {
 
     const saveUser = (name, email, type) => {
         const user = { name, email, isSeller: type }
-        fetch('http://localhost:5000/users', {
+        fetch('https://used-products-resale-market-server-five.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -4,7 +4,7 @@ const useAdminRole = (email) => {
     const [isAdmin, setIsAmdin] = useState(false);
     const [adminLoading, setAdminLoading] = useState(true);
     useEffect(() => {
-        fetch(`http://localhost:5000/users/admin/${email}`)
+        fetch(`https://used-products-resale-market-server-five.vercel.app/users/admin/${email}`)
             .then(res => res.json())
             .then(data => {
                 setIsAmdin(data.isAdmin)

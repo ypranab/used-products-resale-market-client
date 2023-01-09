@@ -7,7 +7,7 @@ const AllSellers = () => {
         queryKey: ['sellers'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/sellers', {
+                const res = await fetch('https://used-products-resale-market-server-five.vercel.app/sellers', {
                     headers: {
                         'content-type': 'application/json',
                     }
@@ -26,7 +26,7 @@ const AllSellers = () => {
     }
 
     const handleDelete = (seller) => {
-        fetch(`http://localhost:5000/seller/${seller._id}`, {
+        fetch(`https://used-products-resale-market-server-five.vercel.app/seller/${seller._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
@@ -42,7 +42,7 @@ const AllSellers = () => {
     }
 
     const handleVerify = id => {
-        fetch(`http://localhost:5000/users/verify${id}`, {
+        fetch(`https://used-products-resale-market-server-five.vercel.app/users/verify${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

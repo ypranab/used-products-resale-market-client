@@ -33,7 +33,7 @@ const AddProducts = () => {
                         email: user?.email,
                         userName: user?.displayName
                     }
-                    fetch('http://localhost:5000/phones', {
+                    fetch('https://used-products-resale-market-server-five.vercel.app/phones', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
