@@ -22,7 +22,7 @@ const AddProducts = () => {
                     const phone = {
                         name: data.name,
                         brand: data.brand,
-                        price: data.price,
+                        price: parseInt(data.price),
                         image: imageData.data.url,
                         email: user?.email
                     }

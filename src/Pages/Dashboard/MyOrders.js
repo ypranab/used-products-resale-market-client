@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const MyOrders = () => {
-    const { user } = useContext(AuthContext);
+    const { user, setCartLength } = useContext(AuthContext);
 
     const { data: bookings = [] } = useQuery({
         queryKey: ['bookings', user?.email],
@@ -19,7 +19,7 @@ const MyOrders = () => {
             return data;
         }
     })
-
+    setCartLength(bookings.length);
     return (
         <div>
             <h2 className='text-2xl mb-8'>My Appointment</h2>
@@ -40,7 +40,7 @@ const MyOrders = () => {
                             bookings?.map((booking, idx) =>
                                 <tr key={idx}>
                                     <td>{idx + 1}</td>
-                                    <th>{booking.name}</th>
+                                    <th>{booking.phoneName}</th>
                                     <th>{booking.brand}</th>
                                     <th>{booking.price}</th>
                                     <th>

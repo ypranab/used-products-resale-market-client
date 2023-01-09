@@ -16,6 +16,7 @@ const Login = () => {
 
     if (token) {
         console.log("Token accessed")
+        //navigate(from, { replace: true })
     }
 
     const handleLogin = data => {
@@ -30,7 +31,6 @@ const Login = () => {
                 console.log(error.message);
                 setLoginError(error.message);
             })
-        navigate(from, { replace: true })
     }
 
     const handleGoogleLogin = () => {
@@ -53,7 +53,6 @@ const Login = () => {
 
     const saveUser = (name, email, type) => {
         const user = { name, email, isSeller: type }
-        console.log(user)
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -65,7 +64,6 @@ const Login = () => {
             .then(data => {
                 setuserEmail(email);
             })
-        navigate(from, { replace: true })
     }
 
     return (

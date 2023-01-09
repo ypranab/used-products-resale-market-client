@@ -28,6 +28,28 @@ const Home = () => {
                 }
             </div>
             <AdvertisedItems></AdvertisedItems>
+            <div>
+                <label className="swap swap-flip text-5xl">
+
+                    <input type="checkbox" />
+
+                    <div className="swap-on"><img src={'https://i.ibb.co/swF0kyY/banner-1.png'} alt="" /></div>
+                    <div className="swap-off">
+                        <div className="hero bg-base-200">
+                            <div className="hero-content text-center">
+                                <div className="max-w-md">
+                                    <h1 className="text-5xl font-bold">Exiting offers</h1>
+                                    <p className="py-6">New Year Sale!!</p>
+                                    <span className='swap-on'>
+                                        <span className="btn btn-primary">Get Started</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+            </div>
+
         </div>
     );
 };

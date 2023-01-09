@@ -17,6 +17,7 @@ const SignUp = () => {
 
     if (token) {
         console.log("Token accessed")
+        //navigate(from, { replace: true })
     }
     const handleSignUp = data => {
         setSignUpError('')
@@ -54,7 +55,6 @@ const SignUp = () => {
             .then(data => {
                 setuserEmail(email);
             })
-        navigate(from, { replace: true })
     }
 
     const handleGoogleLogin = () => {
@@ -67,7 +67,6 @@ const SignUp = () => {
                         console.log(user)
                     })
                     .catch(error => console.log(error))
-                navigate(from, { replace: true })
             })
             .catch(error => {
                 setSignUpError(error.message);

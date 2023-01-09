@@ -4,19 +4,21 @@ import { AuthContext } from '../../../Context/AuthProvider';
 
 const BookingModal = ({ bookedPhone, setBookedPhone }) => {
     const { user } = useContext(AuthContext);
-    console.log(bookedPhone)
+    console.log(bookedPhone, user)
     const handleBooking = event => {
         event.preventDefault()
         const form = event.target;
-        const name = form.name.value;
+        const phoneName = form.phoneName.value;
         const brand = form.brand.value;
-        const price = form.price.value;
+        const price = parseInt(form.price.value);
         const phone = form.phone.value;
+        const location = form.location.value;
         const booking = {
-            name,
+            phoneName,
             brand,
             price,
             phone,
+            location,
             email: user.email
         }
         fetch('http://localhost:5000/bookings', {
@@ -48,9 +50,12 @@ const BookingModal = ({ bookedPhone, setBookedPhone }) => {
                 <div className="modal-box relative">
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-4 mt-6'>
-                        <input name='name' type="text" defaultValue={bookedPhone.name} disabled placeholder="Name" className="input input-bordered w-full" />
+                        <input name='name' type="text" defaultValue={user.displayName} disabled placeholder="Name" className="input input-bordered w-full" />
+                        <input name='email' type="email" defaultValue={user.email} disabled placeholder="Name" className="input input-bordered w-full" />
+                        <input name='phoneName' type="text" defaultValue={bookedPhone.name} disabled placeholder="Name" className="input input-bordered w-full" />
                         <input name='brand' type="text" defaultValue={bookedPhone.brand} disabled placeholder="Brand" className="input input-bordered w-full" />
                         <input name='price' type="text" defaultValue={bookedPhone.price} disabled placeholder="Price" className="input input-bordered w-full" />
+                        <input name='location' type="text" placeholder="meeting location" className="input input-bordered w-full" required />
                         <input name='phone' type="text" placeholder="phone number" className="input input-bordered w-full" required />
                         <br />
                         <input type="submit" className='w-full btn btn-accent' value="Submit" />

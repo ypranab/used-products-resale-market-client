@@ -21,7 +21,7 @@ const MyProducts = () => {
     })
     return (
         <div>
-            <h2 className='text-2xl mb-8'>My products {products.length}</h2>
+            <h2 className='text-2xl mb-8'>My products {products?.length}</h2>
             <div className="overflow-x-auto mr-10">
                 <table className="table w-full">
                     <thead>
