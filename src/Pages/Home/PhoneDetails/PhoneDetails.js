@@ -14,20 +14,29 @@ const PhoneDetails = () => {
                 {
                     phones.map(phone => <div
                         key={phone._id}
-                        className="p-5 card w-3/4 mx-auto shadow-xl">
-                        <figure><img src={phone.image} alt="logo" /></figure>
+                        className="m-4 card card-side bg-base-100 shadow-xl">
+                        <figure className='w-1/2 ml-2'><img src={phone.image} alt="logo" /></figure>
                         <div className="card-body">
-                            <h2 className="text-center font-bold">{phone.name}</h2>
-                            <h2 className="text-center font-bold">{phone.brand}</h2>
-                        </div>
-                        <div className="card-actions justify-center">
-                            {user &&
-                                <label
-                                    htmlFor="booking-modal"
-                                    className="btn btn-primary text-white"
-                                    onClick={() => setBookedPhone(phone)}
-                                >Buy Phone</label>
-                            }
+                            <h2 className="card-title">{phone.name}</h2>
+                            <h2 className="font-bold">Brand: {phone.brand}</h2>
+                            <h2 className="text-center">Original Price: {phone.price}</h2>
+                            <h2 className="text-center">Resale Price: {phone.resalePrice}</h2>
+                            <h2 className="text-center">Year Used: {2023 - phone.year} year</h2>
+                            <h2 className="text-center">Seller: {phone.userName}</h2>
+                            <h2 className="text-center">Location of Seller: {phone.location}</h2>
+                            <div className="card-actions justify-center">
+                                {user &&
+                                    <>
+                                        <br />
+                                        <label
+                                            htmlFor="booking-modal"
+                                            className="btn btn-primary text-white"
+                                            onClick={() => setBookedPhone(phone)}
+                                        >Buy Phone</label>
+                                    </>
+
+                                }
+                            </div>
                         </div>
                     </div>)
                 }

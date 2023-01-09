@@ -28,7 +28,9 @@ const MyProducts = () => {
                         <tr>
                             <th>SN</th>
                             <th>Name</th>
-                            <th>Payment</th>
+                            <th>Brand</th>
+                            <th>Resale Price</th>
+                            <th>Purchase Price</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,6 +41,8 @@ const MyProducts = () => {
                                     <td>{idx + 1}</td>
                                     <th>{product.name}</th>
                                     <th>{product.brand}</th>
+                                    <th>{product.resalePrice}</th>
+                                    <th>{product.price}</th>
                                 </tr>)
                         }
                     </tbody>

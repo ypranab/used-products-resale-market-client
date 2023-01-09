@@ -41,7 +41,7 @@ const Home = () => {
                                     <h1 className="text-5xl font-bold">Exiting offers</h1>
                                     <p className="py-6">New Year Sale!!</p>
                                     <span className='swap-on'>
-                                        <span className="btn btn-primary">Get Started</span>
+                                        <span className="btn btn-primary">REVEAL</span>
                                     </span>
                                 </div>
                             </div>

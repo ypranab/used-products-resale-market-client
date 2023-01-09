@@ -5,19 +5,19 @@ const AdvertisedItems = () => {
         <div className="stats bg-secondary m-7 text-primary-content">
 
             <div className="stat">
-                <div className="stat-title">Account balance</div>
-                <div className="stat-value">$89,400</div>
+                <div className="stat-title">Hot Sale</div>
+                <div className="stat-value">Discount 10%</div>
                 <div className="stat-actions">
-                    <button className="btn btn-sm btn-success">Add funds</button>
+                    <button className="btn btn-sm btn-success">buy now</button>
                 </div>
             </div>
 
             <div className="stat">
-                <div className="stat-title">Current balance</div>
-                <div className="stat-value">$89,400</div>
+                <div className="stat-title">Hurry UP!!</div>
+                <div className="stat-value">Stock limited</div>
                 <div className="stat-actions">
-                    <button className="btn btn-sm">Withdrawal</button>
-                    <button className="btn btn-sm">deposit</button>
+                    <button className="btn btn-sm mr-2">OFFERS</button>
+                    <button className="btn btn-sm">ADD To WISHLIST</button>
                 </div>
             </div>
 
