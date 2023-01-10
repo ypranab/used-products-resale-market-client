@@ -13,6 +13,7 @@ const BookingModal = ({ bookedPhone, setBookedPhone }) => {
         const price = parseInt(form.price.value);
         const phone = form.phone.value;
         const location = form.location.value;
+
         const booking = {
             phoneName,
             brand,
@@ -21,7 +22,8 @@ const BookingModal = ({ bookedPhone, setBookedPhone }) => {
             location,
             email: user.email
         }
-        fetch('https://used-products-resale-market-server-five.vercel.app/bookings', {
+
+        fetch('http://localhost:5000/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -30,7 +32,7 @@ const BookingModal = ({ bookedPhone, setBookedPhone }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                //console.log(data)
                 if (data.acknowledged) {
                     setBookedPhone(null);
                     toast.success('booking confirmed')

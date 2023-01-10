@@ -9,7 +9,7 @@ const MyOrders = () => {
     const { data: bookings = [] } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
-            const res = await fetch(`https://used-products-resale-market-server-five.vercel.app/bookings?email=${user?.email}`, {
+            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
                 headers: {
                     'content-type': 'application/json',
                     authorization: `bearer ${localStorage.getItem('user-token')}`
@@ -22,7 +22,7 @@ const MyOrders = () => {
     setCartLength(bookings.length);
     return (
         <div>
-            <h2 className='text-2xl mb-8'>My Appointment</h2>
+            <h2 className='text-2xl mb-8'>My Orders</h2>
             <div className="overflow-x-auto mr-10">
                 <table className="table w-full">
                     <thead>

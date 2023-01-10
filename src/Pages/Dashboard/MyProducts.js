@@ -1,15 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
 
-    const { data: products = [] } = useQuery({
+    const { data: products = [], isLoading, refetch } = useQuery({
         queryKey: ['products', user?.email],
         queryFn: async () => {
-            const res = await fetch(`https://used-products-resale-market-server-five.vercel.app/products?email=${user?.email}`, {
+            const res = await fetch(`http://localhost:5000/products?email=${user?.email}`, {
                 headers: {
                     'content-type': 'application/json',
                     authorization: `bearer ${localStorage.getItem('user-token')}`
@@ -19,6 +19,26 @@ const MyProducts = () => {
             return data;
         }
     })
+
+    if (isLoading) {
+        return <p>Loading</p>
+    }
+
+    const handleDelete = (id) => {
+        fetch(`http://localhost:5000/products/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('user-token')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                //console.log(data)
+                toast.success(`Phone deleted`)
+                refetch();
+            })
+    }
     return (
         <div>
             <h2 className='text-2xl mb-8'>My products {products?.length}</h2>
@@ -31,6 +51,8 @@ const MyProducts = () => {
                             <th>Brand</th>
                             <th>Resale Price</th>
                             <th>Purchase Price</th>
+                            <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,6 +65,10 @@ const MyProducts = () => {
                                     <th>{product.brand}</th>
                                     <th>{product.resalePrice}</th>
                                     <th>{product.price}</th>
+                                    <th className='text-green-400'>{product.status}</th>
+                                    <th>
+                                        <button onClick={() => { if (window.confirm('Delete the phone?')) { handleDelete(product._id) } }} className="btn btn-warning btn-xs">delete</button>
+                                    </th>
                                 </tr>)
                         }
                     </tbody>

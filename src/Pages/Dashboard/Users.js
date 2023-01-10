@@ -6,14 +6,14 @@ const Users = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('https://used-products-resale-market-server-five.vercel.app/users');
+            const res = await fetch('http://localhost:5000/users');
             const data = await res.json();
             return data;
         }
     })
 
     const handleMakeAdmin = id => {
-        fetch(`https://used-products-resale-market-server-five.vercel.app/users/admin${id}`, {
+        fetch(`http://localhost:5000/users/admin${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

@@ -14,23 +14,28 @@ const PhoneDetails = () => {
                 {
                     phones.map(phone => <div
                         key={phone._id}
-                        className="m-4 card card-side bg-base-100 shadow-xl">
-                        <figure className='w-1/2 ml-2'><img src={phone.image} alt="logo" /></figure>
-                        <div className="card-body">
+                        className="m-4 card lg:card-side bg-emerald-100 shadow-xl">
+                        <figure className='w-1/4 ml-2'><img src={phone.image} alt="logo" /></figure>
+                        <div className="card-body text-left">
                             <h2 className="card-title">{phone.name}</h2>
-                            <h2 className="font-bold">Brand: {phone.brand}</h2>
-                            <h2 className="text-center">Original Price: {phone.price}</h2>
-                            <h2 className="text-center">Resale Price: {phone.resalePrice}</h2>
-                            <h2 className="text-center">Year Used: {2023 - phone.year} year</h2>
-                            <h2 className="text-center">Seller: {phone.userName}</h2>
-                            <h2 className="text-center">Location of Seller: {phone.location}</h2>
-                            <div className="card-actions justify-center">
+                            <p>Brand: {phone.brand}</p>
+                            <p>Original Price: {phone.price} BDT</p>
+                            <p>Resale Price: {phone.resalePrice} BDT</p>
+                            <p>Year Used: {2023 - phone.year} year</p>
+                            <p>Seller: {phone.userName}
+                                {
+                                    phone.verify && <input checked type="checkbox" value=""></input>
+                                }
+                            </p>
+                            <p>Location: {phone.location}</p>
+
+                            <div className="card-actions justify-end">
                                 {user &&
                                     <>
                                         <br />
                                         <label
                                             htmlFor="booking-modal"
-                                            className="btn btn-primary text-white"
+                                            className="btn btn-info text-white"
                                             onClick={() => setBookedPhone(phone)}
                                         >Buy Phone</label>
                                     </>

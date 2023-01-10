@@ -1,12 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
-import AddProducts from "../Pages/AdminActivity/AddProducts";
+import AddProducts from "../Pages/AddPhone/AddProducts";
 import Blog from "../Pages/Blog";
 import AllBuyers from "../Pages/Dashboard/AllBuyers";
 import AllSellers from "../Pages/Dashboard/AllSellers";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import MyOrders from "../Pages/Dashboard/MyOrders";
 import MyProducts from "../Pages/Dashboard/MyProducts";
+import Payment from "../Pages/Dashboard/Payment";
 import RouteError from "../Pages/Error/RouteError";
 import Home from "../Pages/Home/Home";
 import PhoneDetails from "../Pages/Home/PhoneDetails/PhoneDetails";
@@ -28,7 +29,7 @@ export const router = createBrowserRouter([
             {
                 path: '/category/:brand',
                 element: <PrivateRoute><PhoneDetails></PhoneDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://used-products-resale-market-server-five.vercel.app/category/${params.brand}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.brand}`)
             },
             {
                 path: '/login',
@@ -53,6 +54,11 @@ export const router = createBrowserRouter([
                 element: <MyOrders></MyOrders>
             },
             {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
+            },
+            {
                 path: '/dashboard/addphone',
                 element: <SellerRoute><AddProducts></AddProducts></SellerRoute>
             },
@@ -67,7 +73,7 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/sellers',
                 element: <AdminRoute><AllSellers></AllSellers></AdminRoute>,
-                loader: () => fetch('https://used-products-resale-market-server-five.vercel.app/sellers')
+                loader: () => fetch('http://localhost:5000/sellers')
             }
         ]
     },

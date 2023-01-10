@@ -31,9 +31,10 @@ const AddProducts = () => {
                         resalePrice: parseInt(data.resalePrice),
                         year: parseInt(data.year),
                         email: user?.email,
-                        userName: user?.displayName
+                        userName: user?.displayName,
+                        status: 'available'
                     }
-                    fetch('https://used-products-resale-market-server-five.vercel.app/phones', {
+                    fetch('http://localhost:5000/phones', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

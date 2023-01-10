@@ -10,9 +10,9 @@ const Login = () => {
     const [userEmail, setuserEmail] = useState('')
     const [token] = useToken(userEmail);
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const location = useLocation();
-    const navigate = useNavigate();
-    const from = location.state?.from?.pathname || '/';
+    //const location = useLocation();
+    //const navigate = useNavigate();
+    //const from = location.state?.from?.pathname || '/';
 
     if (token) {
         console.log("Token accessed")
@@ -53,7 +53,7 @@ const Login = () => {
 
     const saveUser = (name, email, type) => {
         const user = { name, email, isSeller: type }
-        fetch('https://used-products-resale-market-server-five.vercel.app/users', {
+        fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

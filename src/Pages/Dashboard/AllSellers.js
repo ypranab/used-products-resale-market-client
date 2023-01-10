@@ -7,7 +7,7 @@ const AllSellers = () => {
         queryKey: ['sellers'],
         queryFn: async () => {
             try {
-                const res = await fetch('https://used-products-resale-market-server-five.vercel.app/sellers', {
+                const res = await fetch('http://localhost:5000/sellers', {
                     headers: {
                         'content-type': 'application/json',
                     }
@@ -15,9 +15,7 @@ const AllSellers = () => {
                 const data = await res.json()
                 return data;
             }
-            catch (error) {
-
-            }
+            catch (error) { }
         }
     })
 
@@ -26,7 +24,7 @@ const AllSellers = () => {
     }
 
     const handleDelete = (seller) => {
-        fetch(`https://used-products-resale-market-server-five.vercel.app/seller/${seller._id}`, {
+        fetch(`http://localhost:5000/seller/${seller._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
@@ -41,8 +39,8 @@ const AllSellers = () => {
             })
     }
 
-    const handleVerify = id => {
-        fetch(`https://used-products-resale-market-server-five.vercel.app/users/verify${id}`, {
+    const handleVerify = seller => {
+        fetch(`http://localhost:5000/users/verify${seller._id}/${seller.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -87,11 +85,13 @@ const AllSellers = () => {
                             </td>
                             <td>
                                 {!seller.verify ?
-                                    <button className='btn btn-secondary btn-xs' onClick={() => { if (window.confirm('Are you sure?')) { handleVerify(seller._id) } }}>Verify</button>
+                                    <button className='btn btn-secondary btn-xs'
+                                        onClick={() => { if (window.confirm('Are you sure?')) { handleVerify(seller) } }}>Verify</button>
                                     : <button className='btn btn-xs' disabled>verified</button>}
                             </td>
                             <th>
-                                <button onClick={() => { if (window.confirm('Delete the seller?')) { handleDelete(seller) } }} className="btn btn-warning btn-xs">delete</button>
+                                <button
+                                    onClick={() => { if (window.confirm('Delete the seller?')) { handleDelete(seller) } }} className="btn btn-warning btn-xs">delete</button>
                             </th>
                         </tr>)
                     }
