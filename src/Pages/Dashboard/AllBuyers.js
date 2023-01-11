@@ -69,7 +69,7 @@ const AllBuyers = () => {
                                 <span className="badge badge-ghost badge-sm">{buyer.email}</span>
                             </td>
                             <th>
-                                <button onClick={() => { if (window.confirm('Delete the buyer?')) { handleDelete(buyer) } }} className="btn btn-ghost btn-xs">delete</button>
+                                <button onClick={() => { if (window.confirm('Delete the buyer?')) { handleDelete(buyer) } }} className="btn btn-error btn-xs">delete</button>
                             </th>
                         </tr>)
                     }

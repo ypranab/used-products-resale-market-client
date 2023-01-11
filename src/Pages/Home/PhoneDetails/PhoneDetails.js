@@ -10,7 +10,7 @@ const PhoneDetails = () => {
     console.log(bookedPhone)
 
     return (
-        <div className='h-screen'>
+        <div className='lg:h-screen'>
             <div className='p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
                     phones.map(phone =>

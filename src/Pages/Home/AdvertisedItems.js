@@ -2,7 +2,7 @@ import React from 'react';
 
 const AdvertisedItems = () => {
     return (
-        <div className="stats w-1/2 bg-secondary m-7 text-primary-content">
+        <div className="stats w-3/4 lg:w-1/2 bg-secondary m-7 text-primary-content">
 
             <div className="w-full stat">
                 <div className="stat-title">Hot Sale</div>

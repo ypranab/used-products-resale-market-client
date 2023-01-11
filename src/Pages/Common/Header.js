@@ -38,7 +38,6 @@ const Header = () => {
                     </label>
                     <div tabIndex={0} className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
                         <div className="card-body">
-                            <span className="font-bold text-lg">your cart</span>
                             <div className="card-actions">
                                 <Link className='mx-auto' to='/dashboard/myorders'><button className="btn btn-primary btn-block">View cart</button></Link>
                             </div>
