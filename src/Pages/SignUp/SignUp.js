@@ -15,7 +15,7 @@ const SignUp = () => {
 
     if (token) {
         console.log("Token accessed")
-        //navigate('/')
+        navigate('/')
     }
     const handleSignUp = data => {
         setSignUpError('')

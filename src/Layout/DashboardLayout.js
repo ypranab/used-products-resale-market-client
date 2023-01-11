@@ -1,9 +1,9 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from '../Common/Header';
-import SideBar from './SideBar';
+import Header from '../Pages/Common/Header';
+import SideBar from '../Pages/Dashboard/SideBar';
 
-const Dashboard = () => {
+const DashboardLayout = () => {
     return (
         <div>
             <Header></Header>
@@ -15,9 +15,8 @@ const Dashboard = () => {
                     <Outlet></Outlet>
                 </div>
             </div>
-
         </div>
     );
 };
 
-export default Dashboard;
+export default DashboardLayout;

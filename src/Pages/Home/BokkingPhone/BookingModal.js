@@ -4,7 +4,7 @@ import { AuthContext } from '../../../Context/AuthProvider';
 
 const BookingModal = ({ bookedPhone, setBookedPhone }) => {
     const { user } = useContext(AuthContext);
-    console.log(bookedPhone, user)
+    console.log(bookedPhone)
     const handleBooking = event => {
         event.preventDefault()
         const form = event.target;
@@ -16,6 +16,7 @@ const BookingModal = ({ bookedPhone, setBookedPhone }) => {
 
         const booking = {
             phoneName,
+            phoneId: bookedPhone._id,
             brand,
             price,
             phone,

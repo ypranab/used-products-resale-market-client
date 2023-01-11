@@ -8,7 +8,6 @@ const auth = getAuth(app)
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [cartLength, setCartLength] = useState(0);
     const googleProvider = new GoogleAuthProvider();
 
     const createUser = (email, password) => {
@@ -32,7 +31,6 @@ const AuthProvider = ({ children }) => {
 
     const logOut = () => {
         setLoading(true);
-        setCartLength(0)
         localStorage.removeItem('user-token');
         return signOut(auth);
     }
@@ -54,8 +52,6 @@ const AuthProvider = ({ children }) => {
         logOut,
         user,
         loading,
-        setCartLength,
-        cartLength
     }
     return (
         <AuthContext.Provider value={authInfo}>

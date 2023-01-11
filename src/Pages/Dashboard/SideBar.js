@@ -9,21 +9,21 @@ const SideBar = () => {
     const [isSeller] = useSeller(user?.email)
     const [isAdmin] = useAdminRole(user?.email)
     return (
-        <div className='grid grid-cols-1 gap-4'>
+        <div className='h-screen'>
             {!isSeller && !isAdmin &&
-                <button className='btn btn-primary'><Link to='/dashboard/myorders'>My Orders</Link></button>
+                <Link to='/dashboard/myorders'><button className='btn btn-primary mb-5'>My Orders</button></Link>
             }
             {isSeller && !isAdmin &&
                 <>
-                    <button className='btn btn-primary'><Link to='/dashboard/addphone'>Add Phone</Link></button>
-                    <button className='btn btn-primary'><Link to='/dashboard/myproducts'>My Products</Link></button>
+                    <button className='btn btn-primary mb-5'><Link to='/dashboard/addphone'>Add Phone</Link></button>
+                    <button className='btn btn-primary mb-5'><Link to='/dashboard/myproducts'>My Products</Link></button>
                 </>
             }
             {
                 isAdmin &&
                 <>
-                    <button className='btn btn-secondary'><Link to='/dashboard/buyers'>All Buyers</Link></button>
-                    <button className='btn btn-secondary'><Link to='/dashboard/sellers'>All sellers</Link></button>
+                    <button className='btn btn-secondary mb-5'><Link to='/dashboard/buyers'>All Buyers</Link></button>
+                    <button className='btn btn-secondary mb-5'><Link to='/dashboard/sellers'>All sellers</Link></button>
                 </>
             }
 

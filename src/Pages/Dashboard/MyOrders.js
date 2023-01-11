@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const MyOrders = () => {
-    const { user, setCartLength } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     const { data: bookings = [] } = useQuery({
         queryKey: ['bookings', user?.email],
@@ -19,7 +19,7 @@ const MyOrders = () => {
             return data;
         }
     })
-    setCartLength(bookings.length);
+    //setCartLength(bookings.length);
     return (
         <div>
             <h2 className='text-2xl mb-8'>My Orders</h2>
@@ -31,7 +31,7 @@ const MyOrders = () => {
                             <th>Name</th>
                             <th>Brand</th>
                             <th>Price</th>
-                            <th>Action</th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,8 +45,11 @@ const MyOrders = () => {
                                     <th>{booking.price}</th>
                                     <th>
                                         {
-                                            booking.price &&
+                                            booking.price && !booking.paid &&
                                             <Link to={`/dashboard/payment/${booking._id}`}><button className='btn btn-sm'>pay</button></Link>
+                                        }
+                                        {
+                                            booking.paid && <span className='text-success'>paid</span>
                                         }
                                     </th>
                                 </tr>)
