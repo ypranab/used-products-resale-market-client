@@ -19,7 +19,7 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <div className='p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+            <div className='p-5 grid gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
                     brands.map((brand, idx) => <PhoneBrands
                         key={idx}
@@ -33,7 +33,9 @@ const Home = () => {
 
                     <input type="checkbox" />
 
-                    <div className="swap-on"><img src={'https://i.ibb.co/swF0kyY/banner-1.png'} alt="" /></div>
+                    <div className="swap-on">
+                        <img src={'https://i.ibb.co/swF0kyY/banner-1.png'} alt="" />
+                    </div>
                     <div className="swap-off">
                         <div className="hero bg-base-200">
                             <div className="hero-content text-center">

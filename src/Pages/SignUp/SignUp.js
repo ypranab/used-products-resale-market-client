@@ -14,7 +14,7 @@ const SignUp = () => {
     const navigate = useNavigate();
 
     if (token) {
-        console.log("Token accessed")
+        //console.log("Token accessed")
         navigate('/')
     }
     const handleSignUp = data => {

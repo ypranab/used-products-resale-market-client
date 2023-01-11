@@ -58,7 +58,7 @@ const AllSellers = () => {
 
     return (
         <div className="overflow-x-auto w-full">
-            <table className="table ml-12 w-3/4">
+            <table className="table-auto ml-12 w-3/4">
                 <thead>
                     <tr>
                         <th>SN</th>
