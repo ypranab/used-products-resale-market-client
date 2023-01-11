@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
             {
                 path: '/category/:brand',
                 element: <PrivateRoute><PhoneDetails></PhoneDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.brand}`)
+                loader: ({ params }) => fetch(`https://used-products-resale-market-server-five.vercel.app/category/${params.brand}`)
             },
             {
                 path: '/login',
@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
+                loader: ({ params }) => fetch(`https://used-products-resale-market-server-five.vercel.app/bookings/${params.id}`)
             },
             {
                 path: '/dashboard/addphone',
@@ -76,7 +76,7 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/sellers',
                 element: <AdminRoute><AllSellers></AllSellers></AdminRoute>,
-                loader: () => fetch('http://localhost:5000/sellers')
+                loader: () => fetch('https://used-products-resale-market-server-five.vercel.app/sellers')
             }
         ]
     },

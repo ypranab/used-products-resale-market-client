@@ -9,7 +9,7 @@ const MyProducts = () => {
     const { data: products = [], isLoading, refetch } = useQuery({
         queryKey: ['products', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/products?email=${user?.email}`, {
+            const res = await fetch(`https://used-products-resale-market-server-five.vercel.app/products?email=${user?.email}`, {
                 headers: {
                     'content-type': 'application/json',
                     authorization: `bearer ${localStorage.getItem('user-token')}`
@@ -25,7 +25,7 @@ const MyProducts = () => {
     }
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://used-products-resale-market-server-five.vercel.app/products/${id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',

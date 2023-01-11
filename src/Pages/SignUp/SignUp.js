@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import useToken from '../../hooks/useToken';
 
@@ -42,7 +42,7 @@ const SignUp = () => {
 
     const saveUser = (name, email, type) => {
         const user = { name, email, isSeller: type }
-        fetch('http://localhost:5000/users', {
+        fetch('https://used-products-resale-market-server-five.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
