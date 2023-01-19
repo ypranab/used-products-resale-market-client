@@ -1,10 +1,5 @@
 # Getting Started with Used Products Resale Market
 
-## adminEmail: pranab@mail.com
-
-
-### adminPassword: 123456
-
 
 ### Phone ReCommerce
 
